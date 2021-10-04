@@ -56,6 +56,10 @@ class FlyerBuilder
 		return $this->temp_file_name;
 	}
 	
+	public function generateAndDownloadDocx(){
+		$this->phpWord->save('ulotka.docx', 'Word2007', true);
+	}
+	
 	public function manage_linebreaks($str){
 		$result = str_replace('\n', '<w:br/>', $str);
 		return $result;

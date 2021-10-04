@@ -55,17 +55,4 @@ foreach ($posts as &$single_post) {
 }
 unset($single_post);
 
-$generated_file = $flyerBuilder->generateAndSaveDocx();
-
-header('Content-Description: File Transfer');
-header('Content-Disposition: attachment; filename=' . basename('ulotka.docx'));
-header('Expires: 0');
-header('Cache-Control: must-revalidate');
-header('Pragma: public');
-header('Content-Length: ' . filesize($generated_file));
-header("Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document");
-readfile($generated_file);
-
-unlink($generated_file);
-
-?>
+$flyerBuilder->generateAndDownloadDocx();
